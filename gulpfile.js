@@ -11,7 +11,7 @@ function scripts() {
     .pipe(concat('main.min.js'))
     .pipe(uglify())
     .pipe(dest('app/js'))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream());
 }
 
 function styles() {
@@ -20,13 +20,13 @@ function styles() {
     .pipe(concat('style.min.css'))
     .pipe(scss({ outputStyle: 'compressed' }))
     .pipe(dest('app/css'))
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream());
 }
 
 function watching() {
-  watch(['app/scss/style.scss'], styles)
-  watch(['app/js/main.js'], scripts)
-  watch(['app/*.html']).on('change', browserSync.reload)
+  watch(['app/scss/style.scss'], styles);
+  watch(['app/js/main.js'], scripts);
+  watch(['app/*.html']).on('change', browserSync.reload);
 }
 
 function browsersync() {
@@ -39,7 +39,7 @@ function browsersync() {
 
 function cleanDist() {
   return src('dist')
-    .pipe(clean())
+    .pipe(clean());
 }
 
 function building() {
@@ -48,7 +48,7 @@ function building() {
     'app/js/main.min.js',
     'app/**/*.html'
   ], { base: 'app' })
-    .pipe(dest('dist'))
+    .pipe(dest('dist'));
 }
 
 exports.styles = styles;
